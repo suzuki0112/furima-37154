@@ -5,6 +5,11 @@
 | nickname           | string | null: false |
 | email              | string | null: false |
 | encrypted_password | string | null: false |
+| first_name         | string | null: false |
+| family_name        | string | null: false |
+| read_first         | string | null: false |
+| read_family        | string | null: false |
+| birth              | date   | null: false |
 
 ### Association
 
@@ -13,18 +18,17 @@
 
 ## itemsテーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| image       | text       | null: false                    |
-| name        | string     | null: false                    |
-| description | text       | null: false                    |
-| category    | string     | null: false                    |
-| condition   | string     | null: false                    |
-| freight     | integer    | null: false                    |
-| area        | string     | null: false                    |
-| days        | integer    | null: false                    |
-| price       | integer    | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| description  | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| freight_id   | integer    | null: false                    |
+| area_id      | integer    | null: false                    |
+| days_id      | integer    | null: false                    |
+| price        | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -49,7 +53,7 @@
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | zip      | string     | null: false                    |
-| region   | string     | null: false                    |
+| area_id  | string     | null: false                    |
 | city     | string     | null: false                    |
 | street   | string     | null: false                    |
 | building | string     |                                |

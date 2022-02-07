@@ -1,15 +1,15 @@
 ## usersテーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| first_name         | string | null: false |
-| family_name        | string | null: false |
-| read_first         | string | null: false |
-| read_family        | string | null: false |
-| birth              | date   | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| family_name        | string | null: false               |
+| read_first         | string | null: false               |
+| read_family        | string | null: false               |
+| birth              | date   | null: false               |
 
 ### Association
 
@@ -53,7 +53,7 @@
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | zip      | string     | null: false                    |
-| area_id  | string     | null: false                    |
+| area_id  | integer    | null: false                    |
 | city     | string     | null: false                    |
 | street   | string     | null: false                    |
 | building | string     |                                |

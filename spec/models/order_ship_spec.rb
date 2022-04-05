@@ -55,8 +55,18 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Phone can't be blank")
       end
-      it 'phoneが10桁以上11桁以内の半角数値でないと保存できない' do
+      it 'phoneが9桁以下では購入できない' do
         @order_ship.phone = 123456789
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+      end
+      it 'phoneが12桁以上では購入できない' do
+        @order_ship.phone = 1234567891011
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Phone is invalid")
+      end
+      it 'phoneに半角数字以外が含まれている場合は購入できない' do
+        @order_ship.phone = '1234567891a'
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("Phone is invalid")
       end
@@ -64,6 +74,11 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.user_id = nil
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("User can't be blank")
+      end
+      it 'itemが紐付いていなければ購入できない' do
+        @order_ship.item_id = nil
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
